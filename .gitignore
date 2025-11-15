@@ -1,0 +1,58 @@
+# Sistema de Farmacia - Git Ignore
+
+# Archivos de configuración con credenciales
+config/database.php
+
+# Archivos temporales
+*.tmp
+*.temp
+*.log
+*.cache
+
+# Directorios de sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# Composer
+/vendor/
+composer.lock
+
+# NPM
+node_modules/
+package-lock.json
+
+# Archivos de backup
+*.bak
+*.backup
+*.sql.gz
+
+# Archivos de entorno
+.env
+.env.local
+.env.*.local
+
+# Uploads (opcional, depende de tu estrategia)
+# uploads/*
+# !uploads/.gitkeep
+
+# Cache
+cache/*
+!cache/.gitkeep
+
+# Logs
+logs/*
+!logs/.gitkeep
+
+# Archivos de sesión
+sessions/*
+!sessions/.gitkeep
