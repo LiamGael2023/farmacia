@@ -4,6 +4,11 @@
  * Sistema de Farmacia
  */
 
+// Habilitar errores para debugging (comentar en producción)
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
 
 // Si ya está logueado, redirigir al dashboard
@@ -27,6 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         $db = getDB();
+
+        if (!$db) {
+            die("Error: No se pudo conectar a la base de datos. Verifica la configuración en config/database.php");
+        }
 
         $stmt = $db->prepare("
             SELECT id, username, password, nombre, apellido, email, rol, estado
@@ -83,9 +92,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } catch (PDOException $e) {
         error_log("Login error: " . $e->getMessage());
-        $_SESSION['error'] = 'Error al procesar la solicitud';
-        header('Location: ../../index.php');
-        exit();
+        $_SESSION['error'] = 'Error al procesar la solicitud: ' . $e->getMessage();
+        // En desarrollo, mostrar el error
+        die("Error de base de datos: " . $e->getMessage());
+        // En producción, descomentar las siguientes líneas y comentar el die()
+        // header('Location: ../../index.php');
+        // exit();
+    } catch (Exception $e) {
+        error_log("Login error: " . $e->getMessage());
+        die("Error general: " . $e->getMessage());
     }
 } else {
     header('Location: ../../index.php');

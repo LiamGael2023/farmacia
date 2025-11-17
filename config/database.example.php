@@ -10,6 +10,7 @@
  */
 
 define('DB_HOST', 'localhost');
+define('DB_PORT', '3306');  // Puerto de MySQL (3306 por defecto, 3307 si usas XAMPP con MySQL alternativo)
 define('DB_USER', 'root');  // Cambiar por tu usuario de MySQL
 define('DB_PASS', '');      // Cambiar por tu contraseña de MySQL
 define('DB_NAME', 'farmacia_db');
@@ -17,6 +18,7 @@ define('DB_CHARSET', 'utf8mb4');
 
 class Database {
     private $host = DB_HOST;
+    private $port = DB_PORT;
     private $user = DB_USER;
     private $pass = DB_PASS;
     private $dbname = DB_NAME;
@@ -25,7 +27,7 @@ class Database {
     private $error;
 
     public function __construct() {
-        $dsn = "mysql:host={$this->host};dbname={$this->dbname};charset={$this->charset}";
+        $dsn = "mysql:host={$this->host};port={$this->port};dbname={$this->dbname};charset={$this->charset}";
         $options = [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -37,6 +39,8 @@ class Database {
         } catch (PDOException $e) {
             $this->error = $e->getMessage();
             error_log("Database Connection Error: " . $this->error);
+            // Mostrar error en desarrollo
+            die("Error de conexión a la base de datos: " . $e->getMessage() . "<br>Verifica el puerto, usuario, contraseña y que la base de datos 'farmacia_db' exista.");
         }
     }
 
