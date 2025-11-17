@@ -298,8 +298,7 @@ $(document).ready(function() {
 });
 
 function editMedicine(id) {
-    // Aquí iría la lógica para cargar los datos del medicamento y abrir el modal
-    alert('Función de edición - ID: ' + id);
+    window.location.href = 'medicine-edit.php?id=' + id;
 }
 </script>
 JS;
