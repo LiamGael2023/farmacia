@@ -128,13 +128,22 @@ $categorias = $db->query("SELECT * FROM categorias WHERE estado = 'activo' ORDER
                                                 <?php endif; ?>
                                             </td>
                                             <td>
-                                                <div class="btn-list flex-nowrap">
-                                                    <button class="btn btn-sm btn-icon btn-primary" onclick="editMedicine(<?php echo $med['id']; ?>)" title="Editar">
-                                                        <i class="ti ti-edit icon"></i>
-                                                    </button>
-                                                    <a href="medicine-view.php?id=<?php echo $med['id']; ?>" class="btn btn-sm btn-icon btn-info" title="Ver detalles">
+                                                <div class="btn-group" role="group">
+                                                    <a href="medicine-view.php?id=<?php echo $med['id']; ?>"
+                                                       class="btn btn-sm btn-icon btn-info"
+                                                       title="Ver detalles">
                                                         <i class="ti ti-eye icon"></i>
                                                     </a>
+                                                    <button class="btn btn-sm btn-icon btn-primary"
+                                                            onclick="editMedicine(<?php echo $med['id']; ?>)"
+                                                            title="Editar">
+                                                        <i class="ti ti-edit icon"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-icon btn-danger"
+                                                            onclick="confirmDelete('modules/inventory/delete-medicine.php?id=<?php echo $med['id']; ?>', '¿Eliminar este medicamento?')"
+                                                            title="Eliminar">
+                                                        <i class="ti ti-trash icon"></i>
+                                                    </button>
                                                 </div>
                                             </td>
                                         </tr>
