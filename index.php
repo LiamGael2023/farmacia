@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="es">
 <head>
@@ -30,6 +33,37 @@
                 <h2 class="h3 text-center mb-3">
                     Sistema de Gestión Farmacéutica
                 </h2>
+
+                <?php if (isset($_SESSION['error'])): ?>
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <div class="d-flex">
+                            <div>
+                                <i class="ti ti-alert-circle icon alert-icon"></i>
+                            </div>
+                            <div>
+                                <?php echo htmlspecialchars($_SESSION['error']); ?>
+                            </div>
+                        </div>
+                        <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
+                    </div>
+                    <?php unset($_SESSION['error']); ?>
+                <?php endif; ?>
+
+                <?php if (isset($_SESSION['success'])): ?>
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <div class="d-flex">
+                            <div>
+                                <i class="ti ti-check icon alert-icon"></i>
+                            </div>
+                            <div>
+                                <?php echo htmlspecialchars($_SESSION['success']); ?>
+                            </div>
+                        </div>
+                        <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
+                    </div>
+                    <?php unset($_SESSION['success']); ?>
+                <?php endif; ?>
+
                 <form action="modules/auth/login.php" method="post" autocomplete="off" novalidate>
                     <div class="mb-3">
                         <label class="form-label">Usuario</label>
