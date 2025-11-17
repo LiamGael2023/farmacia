@@ -78,13 +78,13 @@ $compras = $db->query("
                                 <td><?php echo htmlspecialchars($comp['usuario_nombre'] . ' ' . $comp['usuario_apellido']); ?></td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <button class="btn btn-sm btn-icon btn-info" title="Ver">
+                                        <a href="purchase-view.php?id=<?php echo $comp['id']; ?>" class="btn btn-sm btn-icon btn-info" title="Ver">
                                             <i class="ti ti-eye icon"></i>
-                                        </button>
-                                        <button class="btn btn-sm btn-icon btn-success" title="Recibir">
-                                            <i class="ti ti-check icon"></i>
-                                        </button>
-                                        <button class="btn btn-sm btn-icon btn-primary" title="Imprimir">
+                                        </a>
+                                        <a href="purchase-edit.php?id=<?php echo $comp['id']; ?>" class="btn btn-sm btn-icon btn-success" title="Editar">
+                                            <i class="ti ti-edit icon"></i>
+                                        </a>
+                                        <button onclick="window.print()" class="btn btn-sm btn-icon btn-primary" title="Imprimir">
                                             <i class="ti ti-printer icon"></i>
                                         </button>
                                     </div>

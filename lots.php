@@ -105,12 +105,12 @@ $proveedores = $db->query("SELECT id, nombre FROM proveedores WHERE estado = 'ac
                                 </td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <button class="btn btn-sm btn-icon btn-info" title="Ver">
+                                        <a href="lot-view.php?id=<?php echo $lote['id']; ?>" class="btn btn-sm btn-icon btn-info" title="Ver">
                                             <i class="ti ti-eye icon"></i>
-                                        </button>
-                                        <button class="btn btn-sm btn-icon btn-primary" title="Editar">
+                                        </a>
+                                        <a href="lot-edit.php?id=<?php echo $lote['id']; ?>" class="btn btn-sm btn-icon btn-primary" title="Editar">
                                             <i class="ti ti-edit icon"></i>
-                                        </button>
+                                        </a>
                                     </div>
                                 </td>
                             </tr>

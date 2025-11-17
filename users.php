@@ -78,17 +78,12 @@ $usuarios = $db->query("SELECT * FROM usuarios ORDER BY nombre ASC")->fetchAll()
                                 </td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <button class="btn btn-sm btn-icon btn-info" title="Ver">
+                                        <a href="user-edit.php?id=<?php echo $user['id']; ?>" class="btn btn-sm btn-icon btn-info" title="Ver">
                                             <i class="ti ti-eye icon"></i>
-                                        </button>
-                                        <button class="btn btn-sm btn-icon btn-primary" title="Editar">
+                                        </a>
+                                        <a href="user-edit.php?id=<?php echo $user['id']; ?>" class="btn btn-sm btn-icon btn-primary" title="Editar">
                                             <i class="ti ti-edit icon"></i>
-                                        </button>
-                                        <?php if ($user['id'] != $_SESSION['user_id']): ?>
-                                        <button class="btn btn-sm btn-icon btn-warning" title="Cambiar estado">
-                                            <i class="ti ti-lock icon"></i>
-                                        </button>
-                                        <?php endif; ?>
+                                        </a>
                                     </div>
                                 </td>
                             </tr>

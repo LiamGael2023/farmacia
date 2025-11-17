@@ -83,13 +83,13 @@ $medicos = $db->query("SELECT id, nombre, apellido, especialidad FROM medicos WH
                                 </td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <button class="btn btn-sm btn-icon btn-info" title="Ver">
+                                        <a href="prescription-view.php?id=<?php echo $pres['id']; ?>" class="btn btn-sm btn-icon btn-info" title="Ver">
                                             <i class="ti ti-eye icon"></i>
-                                        </button>
-                                        <button class="btn btn-sm btn-icon btn-success" title="Dispensar">
+                                        </a>
+                                        <a href="prescription-view.php?id=<?php echo $pres['id']; ?>" class="btn btn-sm btn-icon btn-success" title="Dispensar">
                                             <i class="ti ti-pill icon"></i>
-                                        </button>
-                                        <button class="btn btn-sm btn-icon btn-primary" title="Imprimir">
+                                        </a>
+                                        <button onclick="window.open('print-prescription.php?id=<?php echo $pres['id']; ?>', '_blank')" class="btn btn-sm btn-icon btn-primary" title="Imprimir">
                                             <i class="ti ti-printer icon"></i>
                                         </button>
                                     </div>
